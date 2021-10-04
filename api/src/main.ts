@@ -2,12 +2,20 @@ import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 import * as helmet from 'helmet';
+import express from 'express';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   
   // Helmet can help protect an app from some well-known web vulnerabilities by setting HTTP headers appropriately
   app.use(helmet());
+  
+  // Only allow JSON payloads
+  /*app.use(
+    express.json({
+      type: "application/json"
+    })
+  );*/
 
   const config = new DocumentBuilder()
     .setTitle('Kyso Challenge API')

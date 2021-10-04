@@ -1,10 +1,25 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { PersistenceModule } from './persistence/persistence.module';
+import { DockerController } from './controller/docker/docker.controller';
+import { LogDAO } from './persistence/dao/log-dao.service';
+import { LogService } from './core/service/log.service';
+import { logProviders } from './persistence/provider/log.provider';
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [
+    PersistenceModule
+  ],
+  controllers: [
+    // Rest layer
+    DockerController
+  ],
+  providers: [
+    // Core layer
+    LogService,
+    ...logProviders,
+    
+    // Data Access layer
+    LogDAO 
+  ],
 })
 export class AppModule {}

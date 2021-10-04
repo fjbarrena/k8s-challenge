@@ -1,0 +1,27 @@
+version: '3.8'
+services:
+  kyso-dash:
+    image: fjbarrena/kyso-dash:latest
+    container_name: kyso-dash
+    environment:
+      - DASH_DEBUG_MODE=True
+    ports:
+      - '8050:8050'
+  kyso-api:
+    build: ./api
+    container_name: kyso-api
+    command: nest start
+    volumes:
+      - './api:/opt/kyso/api'
+    ports:
+      - '3000:3000'
+  kyso-mongodb:
+    image: mongo:latest
+    container_name: kyso-mongodb
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=secret
+    volumes:
+      - ./mongodb-local-volume:/data/db
+    ports:
+      - '27017-27019:27017-27019'

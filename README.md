@@ -58,7 +58,7 @@ MONGO_PASSWORD=secret
 MONGO_PATH=admin
 ```
 
-**Side note**: I know the security hear is reeeally bad... in production will be sooo different ;)
+**Side note**: I know the security here is reeeally bad... in production will be sooo different ;)
 
 I use NoSQLBooster for MongoDB as GUI, but you can use whatever you feel more comfortable
 

@@ -46,13 +46,18 @@ If you check the STATUS again, you will se that the deployment was stopped succe
 
 ![Kyso status](./imgs/kyso7.png)
 
-## Prerrequisites
+## MongoDB
 
-In order to execute this code you must:
-    * Have installed Docker Desktop in Windows or MacOs with Kubernetes enabled and running
-      * The following code was not tested in Unix environments with Minikube, but in theory is transparent
-      * In theory, works in any Kubernetes cluster if you provide the right configuration
-    * Let the following ports unused in your machine
+MongoDB is exposed through the internet using the following parameters
 
-## Configuration
+```
+MONGO_HOST=34.78.9.53
+MONGO_PORT=32546
+MONGO_USER=root
+MONGO_PASSWORD=secret
+MONGO_PATH=admin
+```
 
+I use NoSQLBooster for MongoDB as GUI, but you can use whatever you feel more comfortable
+
+![MongoDB](./imgs/kyso8.png)

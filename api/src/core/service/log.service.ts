@@ -12,4 +12,8 @@ export class LogService {
     async save(log: LogDTO): Promise<Log> {
         return this.logDao.create(log);
     }
+
+    async updateStopDate(containerId: string) {
+        return this.logDao.updateStopDate(containerId);
+    }
 }

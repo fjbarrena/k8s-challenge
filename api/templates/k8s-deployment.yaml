@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kyso-dash-api-deployment-#RANDOMIZE
+  labels:
+    app: kyso-dash
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kyso-dash
+  template:
+    metadata:
+      labels:
+        app: kyso-dash
+    spec:
+      containers:
+        - name: kyso-dash
+          image: fjbarrena/kyso-dash:latest
+          imagePullPolicy: Always
+          ports:
+            - name: web
+              containerPort: 8050
+          resources:
+            limits:
+              memory: "500M"
+              cpu: "1"

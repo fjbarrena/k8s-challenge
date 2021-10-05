@@ -1,0 +1,248 @@
+{
+    "response":{
+       "statusCode":201,
+       "body":{
+          "kind":"Service",
+          "apiVersion":"v1",
+          "metadata":{
+             "name":"kyso-dash-service",
+             "namespace":"default",
+             "uid":"24f1638d-0a84-4484-8181-bdae968b6629",
+             "resourceVersion":"3890",
+             "creationTimestamp":"2021-10-04T23:10:59Z",
+             "labels":{
+                "app":"kyso-dash"
+             },
+             "managedFields":[
+                {
+                   "manager":"unknown",
+                   "operation":"Update",
+                   "apiVersion":"v1",
+                   "time":"2021-10-04T23:10:59Z",
+                   "fieldsType":"FieldsV1",
+                   "fieldsV1":{
+                      "f:metadata":{
+                         "f:labels":{
+                            ".":{
+                               
+                            },
+                            "f:app":{
+                               
+                            }
+                         }
+                      },
+                      "f:spec":{
+                         "f:externalTrafficPolicy":{
+                            
+                         },
+                         "f:ports":{
+                            ".":{
+                               
+                            },
+                            "k:{\"port\":8050,\"protocol\":\"TCP\"}":{
+                               ".":{
+                                  
+                               },
+                               "f:name":{
+                                  
+                               },
+                               "f:port":{
+                                  
+                               },
+                               "f:protocol":{
+                                  
+                               },
+                               "f:targetPort":{
+                                  
+                               }
+                            }
+                         },
+                         "f:selector":{
+                            ".":{
+                               
+                            },
+                            "f:app":{
+                               
+                            }
+                         },
+                         "f:sessionAffinity":{
+                            
+                         },
+                         "f:type":{
+                            
+                         }
+                      }
+                   }
+                }
+             ]
+          },
+          "spec":{
+             "ports":[
+                {
+                   "name":"web",
+                   "protocol":"TCP",
+                   "port":8050,
+                   "targetPort":8050,
+                   "nodePort":31201
+                }
+             ],
+             "selector":{
+                "app":"kyso-dash"
+             },
+             "clusterIP":"10.106.125.195",
+             "clusterIPs":[
+                "10.106.125.195"
+             ],
+             "type":"NodePort",
+             "sessionAffinity":"None",
+             "externalTrafficPolicy":"Cluster",
+             "ipFamilies":[
+                "IPv4"
+             ],
+             "ipFamilyPolicy":"SingleStack"
+          },
+          "status":{
+             "loadBalancer":{
+                
+             }
+          }
+       },
+       "headers":{
+          "cache-control":"no-cache, private",
+          "content-type":"application/json",
+          "x-kubernetes-pf-flowschema-uid":"96c83fd9-cfed-4942-81db-42168c1ed3c2",
+          "x-kubernetes-pf-prioritylevel-uid":"9f9591d2-4992-47d1-aa7a-f044aa4e8103",
+          "date":"Mon, 04 Oct 2021 23:10:59 GMT",
+          "content-length":"1017",
+          "connection":"close"
+       },
+       "request":{
+          "uri":{
+             "protocol":"https:",
+             "slashes":true,
+             "auth":null,
+             "host":"kubernetes.docker.internal:6443",
+             "port":"6443",
+             "hostname":"kubernetes.docker.internal",
+             "hash":null,
+             "search":null,
+             "query":null,
+             "pathname":"/api/v1/namespaces/default/services",
+             "path":"/api/v1/namespaces/default/services",
+             "href":"https://kubernetes.docker.internal:6443/api/v1/namespaces/default/services"
+          },
+          "method":"POST",
+          "headers":{
+             "Accept":"application/json",
+             "content-type":"application/json",
+             "content-length":217
+          }
+       }
+    },
+    "body":{
+       "apiVersion":"v1",
+       "kind":"Service",
+       "metadata":{
+          "creationTimestamp":"2021-10-04T23:10:59.000Z",
+          "labels":{
+             "app":"kyso-dash"
+          },
+          "managedFields":[
+             {
+                "apiVersion":"v1",
+                "fieldsType":"FieldsV1",
+                "fieldsV1":{
+                   "f:metadata":{
+                      "f:labels":{
+                         ".":{
+                            
+                         },
+                         "f:app":{
+                            
+                         }
+                      }
+                   },
+                   "f:spec":{
+                      "f:externalTrafficPolicy":{
+                         
+                      },
+                      "f:ports":{
+                         ".":{
+                            
+                         },
+                         "k:{\"port\":8050,\"protocol\":\"TCP\"}":{
+                            ".":{
+                               
+                            },
+                            "f:name":{
+                               
+                            },
+                            "f:port":{
+                               
+                            },
+                            "f:protocol":{
+                               
+                            },
+                            "f:targetPort":{
+                               
+                            }
+                         }
+                      },
+                      "f:selector":{
+                         ".":{
+                            
+                         },
+                         "f:app":{
+                            
+                         }
+                      },
+                      "f:sessionAffinity":{
+                         
+                      },
+                      "f:type":{
+                         
+                      }
+                   }
+                },
+                "manager":"unknown",
+                "operation":"Update",
+                "time":"2021-10-04T23:10:59.000Z"
+             }
+          ],
+          "name":"kyso-dash-service",
+          "namespace":"default",
+          "resourceVersion":"3890",
+          "uid":"24f1638d-0a84-4484-8181-bdae968b6629"
+       },
+       "spec":{
+          "clusterIP":"10.106.125.195",
+          "clusterIPs":[
+             "10.106.125.195"
+          ],
+          "externalTrafficPolicy":"Cluster",
+          "ipFamilies":[
+             "IPv4"
+          ],
+          "ipFamilyPolicy":"SingleStack",
+          "ports":[
+             {
+                "name":"web",
+                "nodePort":31201,
+                "port":8050,
+                "protocol":"TCP",
+                "targetPort":8050
+             }
+          ],
+          "selector":{
+             "app":"kyso-dash"
+          },
+          "sessionAffinity":"None",
+          "type":"NodePort"
+       },
+       "status":{
+          "loadBalancer":{
+             
+          }
+       }
+    }
+ }

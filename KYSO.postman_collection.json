@@ -1,0 +1,114 @@
+{
+	"info": {
+		"_postman_id": "d68f8ff4-e75a-469c-badc-e705064c1c9f",
+		"name": "KYSO",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "START",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://34.78.9.53:30000/start",
+					"protocol": "http",
+					"host": [
+						"34",
+						"78",
+						"9",
+						"53"
+					],
+					"port": "30000",
+					"path": [
+						"start"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "STOP",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"deploymentName\": \"kyso-dash-api-deployment-b8169f1bfba7\",\n    \"serviceName\": \"kyso-dash-service-d55dc5808dee\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://34.78.9.53:30000/stop",
+					"protocol": "http",
+					"host": [
+						"34",
+						"78",
+						"9",
+						"53"
+					],
+					"port": "30000",
+					"path": [
+						"stop"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "STATUS",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://34.78.9.53:30000/status",
+					"protocol": "http",
+					"host": [
+						"34",
+						"78",
+						"9",
+						"53"
+					],
+					"port": "30000",
+					"path": [
+						"status"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "IS-A-FALSE-TOKEN-WHATEVER",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

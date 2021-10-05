@@ -36,11 +36,11 @@ spec:
               containerPort: 8050
           resources:
             limits:
-              memory: "300M"
-              cpu: "0.3"
+              memory: "800M"
+              cpu: "0.4"
           volumeMounts:
             - name: config
-              mountPath: "/opt/kyso/api"
+              mountPath: "/opt/kyso/api/kube"
               readOnly: true
       volumes:
         # You set volumes at the Pod level, then mount them into containers inside that Pod

@@ -36,7 +36,7 @@ export class KubernetesService implements OnModuleInit {
 
   async onModuleInit() {
     this.kubeConf = new KubeConfig();
-    this.kubeConf.loadFromFile("./kube-config");
+    this.kubeConf.loadFromFile("./kube/kube-config");
     console.log(this.kubeConf.getCurrentContext());
     this.appsV1Api = this.kubeConf.makeApiClient(AppsV1Api);
     this.coreV1Api = this.kubeConf.makeApiClient(CoreV1Api);

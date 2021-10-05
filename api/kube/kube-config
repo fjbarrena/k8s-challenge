@@ -1,9 +1,9 @@
 apiVersion: v1
 clusters:
-- cluster:
-    certificate-authority-data: A_FALSE_CERT
-    server: https://A_FALSE_SERVER
-  name: gke_kyso-challenge_europe-west1_kyso-cluster-noautopilot
+  - cluster:
+      certificate-authority-data: PUT_YOUR_CERT_HERE
+      server: https://PUT_YOUR_SERVER_HERE
+    name: gke_kyso-challenge_europe-west1_kyso-cluster-noautopilot
 contexts:
 - context:
     cluster: gke_kyso-challenge_europe-west1_kyso-cluster-noautopilot
@@ -17,7 +17,7 @@ users:
   user:
     auth-provider:
       config:
-        access-token: A_FALSE_TOKEN
+        access-token: PUT_YOUR_TOKEN_HERE
         cmd-args: config config-helper --format=json
         cmd-path: /Users/fjbarrena/Downloads/google-cloud-sdk/bin/gcloud
         expiry: "2021-10-05T11:20:57Z"

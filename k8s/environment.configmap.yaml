@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kyso-environment-configmap
+data:
+  # file-like keys
+  kube-config: |
+    apiVersion: v1
+    clusters:
+    - cluster:
+        certificate-authority-data: PUT_YOUR_CERT_HERE
+        server: https://PUT_YOUR_SERVER_HERE
+      name: gke_kyso-challenge_europe-west1_kyso-cluster-noautopilot
+    contexts:
+    - context:
+        cluster: gke_kyso-challenge_europe-west1_kyso-cluster-noautopilot
+        user: gke_kyso-challenge_europe-west1_kyso-cluster-noautopilot
+      name: gke_kyso-challenge_europe-west1_kyso-cluster-noautopilot
+    current-context: gke_kyso-challenge_europe-west1_kyso-cluster-noautopilot
+    kind: Config
+    preferences: {}
+    users:
+    - name: gke_kyso-challenge_europe-west1_kyso-cluster-noautopilot
+      user:
+        auth-provider:
+          config:
+            access-token: PUT_YOUR_TOKEN_HERE
+            cmd-args: config config-helper --format=json
+            cmd-path: /Users/fjbarrena/Downloads/google-cloud-sdk/bin/gcloud
+            expiry: "2021-10-05T11:20:57Z"
+            expiry-key: '{.credential.token_expiry}'
+            token-key: '{.credential.access_token}'
+          name: gcp

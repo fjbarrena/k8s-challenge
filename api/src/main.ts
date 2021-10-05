@@ -2,11 +2,13 @@ import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 import * as helmet from 'helmet';
-import express from 'express';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  
+
+  // Of course, this is not an option in production, but ease the work in laboratory ;)
+  process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = "0";
+
   // Helmet can help protect an app from some well-known web vulnerabilities by setting HTTP headers appropriately
   app.use(helmet());
   

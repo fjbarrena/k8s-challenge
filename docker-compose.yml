@@ -1,27 +1,81 @@
 version: '3.8'
 services:
-  kyso-dash:
-    image: fjbarrena/kyso-dash:latest
-    container_name: kyso-dash
-    environment:
-      - DASH_DEBUG_MODE=True
-    ports:
-      - '8050:8050'
   kyso-api:
     build: ./api
     container_name: kyso-api
     command: nest start
+    environment:
+      # In a real environment I should use secrets, or even better, HashiCorp Vault
+      - PROXY_IP=0.0.0.0
+      - PROXY_PORT=8001
+      - CLUSTER_NAMESPACE=default
+      - MONGO_USERNAME=root
+      - MONGO_PASSWORD=secret
+      - MONGO_HOST=kyso-mongodb
+      - MONGO_PORT=27017
+      - MONGO_PATH=admin
     volumes:
       - './api:/opt/kyso/api'
     ports:
       - '3000:3000'
+    depends_on:
+      - kyso-mongodb
+    links:
+      - 'kyso-mongodb'
+
   kyso-mongodb:
     image: mongo:latest
     container_name: kyso-mongodb
     environment:
+      # In a real environment I should use secrets, or even better, HashiCorp Vault
       - MONGO_INITDB_ROOT_USERNAME=root
       - MONGO_INITDB_ROOT_PASSWORD=secret
     volumes:
       - ./mongodb-local-volume:/data/db
     ports:
       - '27017-27019:27017-27019'
+  
+#   server:
+#     image: "rancher/k3s:${K3S_VERSION:-latest}"
+#     command: server
+#     tmpfs:
+#       - /run
+#       - /var/run
+#     ulimits:
+#       nproc: 65535
+#       nofile:
+#         soft: 65535
+#         hard: 65535
+#     privileged: true
+#     restart: always
+#     environment:
+#       - K3S_TOKEN=${K3S_TOKEN:?err}
+#       - K3S_KUBECONFIG_OUTPUT=/output/kubeconfig.yaml
+#       - K3S_KUBECONFIG_MODE=666
+#     volumes:
+#       - k3s-server:/var/lib/rancher/k3s
+#       # This is just so that we get the kubeconfig file out
+#       # - .:/output
+#     # ports:
+#     #   - 6443:6443  # Kubernetes API Server
+#     #   - 80:80      # Ingress controller port 80
+#     #   - 443:443    # Ingress controller port 443
+
+#   agent:
+#     image: "rancher/k3s:${K3S_VERSION:-latest}"
+#     tmpfs:
+#       - /run
+#       - /var/run
+#     ulimits:
+#       nproc: 65535
+#       nofile:
+#         soft: 65535
+#         hard: 65535
+#     privileged: true
+#     restart: always
+#     environment:
+#       - K3S_URL=https://server:6443
+#       - K3S_TOKEN=${K3S_TOKEN:?err}
+
+# volumes:
+#   k3s-server: {}

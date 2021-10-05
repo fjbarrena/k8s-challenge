@@ -36,7 +36,8 @@ export class KubernetesService implements OnModuleInit {
 
   async onModuleInit() {
     this.kubeConf = new KubeConfig();
-    this.kubeConf.loadFromDefault();
+    this.kubeConf.loadFromFile("./kube-config");
+    console.log(this.kubeConf.getCurrentContext());
     this.appsV1Api = this.kubeConf.makeApiClient(AppsV1Api);
     this.coreV1Api = this.kubeConf.makeApiClient(CoreV1Api);
     this.batchApi = this.kubeConf.makeApiClient(BatchV1beta1Api);
@@ -106,8 +107,12 @@ export class KubernetesService implements OnModuleInit {
   }
 
   public async namespaceExists(namespace: string): Promise<boolean> {
-    const {body} = await this.coreV1Api.listNamespace();
-    return body.items.some(item => item.metadata.name === namespace);
+    try {
+      const {body} = await this.coreV1Api.listNamespace();
+      return body.items.some(item => item.metadata.name === namespace);
+    } catch(ex) {
+      console.log(ex);
+    }
   }
 
   public async createNamespace(namespace: string): Promise<any> {

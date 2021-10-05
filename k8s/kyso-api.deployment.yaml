@@ -30,10 +30,12 @@ spec:
               value: "27017"
             - name: MONGO_PATH
               value: admin
+            - name: KUBERNETES_MASTER_NODE_ID
+              value: 34.78.9.53
           imagePullPolicy: Always
           ports:
             - name: web
-              containerPort: 8050
+              containerPort: 3000
           resources:
             limits:
               memory: "800M"
@@ -66,4 +68,5 @@ spec:
   ports:
     - protocol: TCP
       name: web
-      port: 8050
+      port: 3000
+      nodePort: 33333

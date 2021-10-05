@@ -8,6 +8,7 @@ import { KubernetesService } from '../../kubernetes/kubernetes.service';
 import { DockerStopRequestDTO } from '../../model/docker-stop-request.dto';
 import * as crypto from 'crypto';
 import { Response } from 'express';
+import { K8sConfigService } from '../../config/k8s-config.service';
 
 @Controller('')
 @ApiTags('')
@@ -16,7 +17,8 @@ export class DockerController extends GenericController {
     private deployed : DockerResponse[] = [];
     constructor(
         private readonly logService: LogService,
-        private readonly kubernetesService: KubernetesService) {
+        private readonly kubernetesService: KubernetesService,
+        private readonly k8sConfigService: K8sConfigService) {
         super();
     }
 
@@ -46,7 +48,7 @@ export class DockerController extends GenericController {
         });
 
         response.status = Status.RUNNING;
-        response.url = `http://localhost:${res.nodePort}`;
+        response.url = `http://${this.k8sConfigService.getKubernetesMasterNodeIp()}:${res.nodePort}`;
         response.deploymentName = res.deploymentName;
         response.serviceName = res.serviceName;
         

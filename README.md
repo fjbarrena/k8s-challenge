@@ -1,4 +1,4 @@
-# Kyso Challenge
+# K8s Challenge
 
 Code of the challenge launched by Kyso
 
